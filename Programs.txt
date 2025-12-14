@@ -1,0 +1,270 @@
+#1 Guess game
+
+import random
+
+a = random.randint(1, 100)
+
+for i in range(9, -1, -1):
+    b = float(input("Guess the number(between 1 to 100) :--> "))
+    
+    if b == a:
+        print("Waaw! You guessed it correct.", "Remaining chances --->", i)
+        break
+    elif b > a:
+        print("Your guess is greater. Try again. Chances left:", i)
+    else:
+        print("Your guess is smaller. Try again. Chances left:", i)
+else:
+    print("Sorry, you've used all chances. The correct number was:", a)
+
+print("-------- Game Over --------")
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+#2 Good marning indigater
+
+import time
+
+Time =time.strftime("%H:%M:%S")
+hur = time.strftime("%H")
+min = time.strftime("%M")
+sec = time.strftime("%S")
+
+if 0 < int(hur) < 12:
+    print("GOOD MORNING SIR","[",Time,"]")
+elif int(hur) == 12:
+    print("GOOD AFTER NOON SIR","[",Time,"]")
+
+elif 13 <= int(hur) <= 18:
+    print("GOOD EVENNING SIR","[",Time,"]")
+else:
+    print("GOOD NIGHT SIR","[",Time,"]")
+
+
+
+-------------------------------------------------------------------------------------------------------------
+
+#3 "KBC game".
+
+
+list = ["1)Who is the father of physics?\nA)Geleogelile,B)AARYABATH,C)Mendal,D)Thomas alwa adition ",
+"2)who is the CM of bihar ?\nA)Modi,B)Nitesh,C)Murmu,D)NOTE",
+"3)who is the national bird of india?\nA)Peacock,B)Dog,C)Lion,D)Cow",
+"4)what is the formula of Xcom for two masses?\nA)M/A,B)D*L,C)w/D,D)NOTA",
+"5)what is colour of sky?\nA)BLUE,B)BLACK,C)WHITE,D)RANBOW"
+]
+
+to_ans = ("A","B","A","D","A")
+
+print("------------AApka swagat hai kon banega karor pati mai------------")
+print("------------aapka pehla question hai yeh---------------")
+
+
+total = 0
+i = 0
+while i < len(list):
+    print(list[i])
+    ans = str(input("CHOOSE THE CORRECT ANS (A,B,C,D) :"))
+    if ans.upper() == to_ans[i]:
+        total += 2000000
+        print("aap jeet cuke hai 20L RS  tatal amount =",total)
+        i += 1
+    else:
+        print(" Affsos hai ke aapka jawab galat hai aap sab paise haar cuke hai", "RS = 000")
+        break
+
+if total == 10000000:
+    print("----------------Badhaye ho aap jeet cuke 'KBC'---------------total amount =",total)
+
+
+
+
+--------------------------------------------------------------------------------------------------------
+#4 "fubinaci sequence"
+
+def calc_fib(a):       
+    '''it is fubinaci sequence fuction. it accept one argument (n) and convert into intiger value
+        if n = 1 then reten 1 or n = 0 then return 0 else n >1 then this fustion call tit self for
+        f(n-1) + f(n-2) and the return the value of f(n-1) + f(n-2).'''
+    try:
+        a = int(a)
+        if(a == 1):
+            return 1
+        elif(a == 0):
+            return 0
+        else:
+            return calc_fib(a-1) + calc_fib(a - 2)
+    except:
+            return 404,"ERROR"
+
+
+----------------------------------------------------------------------------------------------------------
+
+#5 secrate ianguage  (code and decode). 
+
+print("WELCOME TO SECRATE COAD CENTER ` `")
+while True:
+    a = int(input("code(1) or decode(0) :"))
+
+
+    if a == 1:
+        message = input("enter your message :")
+
+        replacement = { "a":"'0+1'" , "e":"'3+1'" , "i":"'1+1'" , "o":"'8+1'" , "u":"'4+1'" ,
+        "2":"'a-1'" , "5":"'u+1'" , "6":"'u+2'" , "7":"'o-1'" , "9":"'o+1'" }
+
+
+        for old,new in replacement.items():
+            message = message.replace(old,new)
+
+        list = message.split(" ")
+        list.reverse()
+        finaly = " ".join(list)
+
+        with open ("message.txt","w") as f:
+            f.write(finaly)
+
+    elif a == 0:
+
+        with open("message.txt","r") as f: 
+                finaly = f.read()
+
+        replacement = { "a":"'0+1'" , "e":"'3+1'" , "i":"'1+1'" , "o":"'8+1'" , "u":"'4+1'" ,
+        "2":"'a-1'" , "5":"'u+1'" , "6":"'u+2'" , "7":"'o-1'" , "9":"'o+1'" }
+        for old,new in replacement.items():
+            finaly = finaly.replace(new,old)
+
+        list = finaly.split(" ")
+        list.reverse()
+        message = " ".join(list)
+
+        print(message)       
+
+
+-------------------------------------------------------------------------------------------------------------
+# snack water gum game.
+
+from random import choice
+
+print("-------WELCOME TO SNAKE WATER GUN GAME-------")
+
+game = ["snak","water","gun"]
+
+p_point = 0
+c_point = 0
+round = 1
+
+while True:
+    print(f"ROUND - {round}")
+    player = int(input("chosse the [snake for (0)], [water for (1)], [gun for (2)], [for exit(-1)]:"))
+    camputer = choice(game)
+
+    if player >2 or player <-1:
+        print("\"ERROR\"  enter valide no (-1 to 2)")
+        continue
+    if player == -1 :
+        break
+    if game[player] == camputer:
+        print(f"tie {game[player]} and {camputer}")
+    elif game[player] == "snak" and camputer == "water":
+        p_point += 1
+        c_point -= 1
+        print(f"you win {game[player]} and {camputer}, you ={p_point},com = {c_point}",)
+    elif game[player] == "water" and camputer == "gun":
+        p_point+= 1
+        c_point -= 1
+        print(f"you win {game[player]} and {camputer},you ={p_point},com = {c_point}",)
+    elif game[player] == "gun" and camputer == "snak":
+        p_point += 1
+        c_point -= 1
+        print(f"you win {game[player]} and {camputer},you ={p_point},com = {c_point}",)
+    else:
+        p_point -= 1
+        c_point += 1
+        print(f"you lost {game[player]} and {camputer},you ={p_point},com = {c_point}",)
+    round += 1
+print(f"Game end! your total point in  {round}-rounds: you ={p_point},com = {c_point}")
+
+-----------------------------------------------------------------------------------------------------------
+#pdf merger in same folder.
+
+from pypdf import PdfWriter
+import os
+
+merge = PdfWriter()
+
+
+files = [pdf for pdf in os.listdir() if pdf.endswith(".pdf")]
+
+for pdf in files:
+    merge.append(files)
+
+merge.write("Mergedpdf.pdf")
+merge.close()
+
+-------------------------------------------------------------------------------------------------------------
+# Passward generator.
+
+import argparse
+import random
+import string
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--length", type=int, default=8)
+args = parser.parse_args()
+
+chars = string.ascii_letters + string.digits
+words =  []
+for _ in range(args.length):
+    words.append(random.choice(chars))
+
+password = "".join(words)
+
+print("Password:", password)
+
+-----------------------------------------------------------------------------------------------------------------
+#shoutout.
+
+import win32com.client
+
+speaker = win32com.client.Dispatch("SAPI.SpVoice")  # Windows speech engine
+voices = speaker.GetVoices()
+speaker.Voice = voices.Item(0)                      # Change Voice
+speaker.Rate = 0                                    # Change word/minute
+speaker.Volume = 100                                # Change Volume
+
+subs = ['Rajesh','Suresh','Mukesh','Ritesh','Kumkum','Sanjana']
+
+for i in subs:
+    speaker.speak(f"Shoutout to {i}")
+
+-------------------------------------------------------------------------------------------------------------------
+#File/Folder copy.
+
+import win32com.client, shutil, os
+
+
+speaker = win32com.client.Dispatch("SAPI.SpVoice")  # Windows speech engine
+voices = speaker.GetVoices()
+speaker.Voice = voices.Item(0)
+speaker.Rate = 0
+speaker.Volume = 100
+
+
+copy = "Sanjana.txt"
+
+if os.path.exists(copy):
+    print("folder alrady exist.")
+else:
+    shutil.copytree(r"C:\Users\Pramod sah\first_code.py",copy)
+
+for i in range(10,-1,-1):
+    print(i)
+    speaker.speak(i)
+
+shutil.rmtree(copy)
+print(f"The folder name ''{copy}'' has deleted.")
+
+---------------------------------------------------------------------------------------------------------------------------
