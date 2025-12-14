@@ -8,7 +8,7 @@ speaker.Rate = 0
 speaker.Volume = 100
 
 
-copy = "Sanjana.txt"
+copy = "New.txt"
 
 if os.path.exists(copy):
     print("folder alrady exist.")
