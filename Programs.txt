@@ -144,7 +144,7 @@ while True:
 
 
 -------------------------------------------------------------------------------------------------------------
-# snack water gum game.
+#6 snack water gum game.
 
 from random import choice
 
@@ -188,7 +188,7 @@ while True:
 print(f"Game end! your total point in  {round}-rounds: you ={p_point},com = {c_point}")
 
 -----------------------------------------------------------------------------------------------------------
-#pdf merger in same folder.
+#7 pdf merger in same folder.
 
 from pypdf import PdfWriter
 import os
@@ -205,7 +205,7 @@ merge.write("Mergedpdf.pdf")
 merge.close()
 
 -------------------------------------------------------------------------------------------------------------
-# Passward generator.
+#8 Passward generator.
 
 import argparse
 import random
@@ -225,7 +225,7 @@ password = "".join(words)
 print("Password:", password)
 
 -----------------------------------------------------------------------------------------------------------------
-#shoutout.
+#9 shoutout.
 
 import win32com.client
 
@@ -241,7 +241,7 @@ for i in subs:
     speaker.speak(f"Shoutout to {i}")
 
 -------------------------------------------------------------------------------------------------------------------
-#File/Folder copy.
+#10 File/Folder copy.
 
 import win32com.client, shutil, os
 
