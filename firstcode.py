@@ -1,23 +1,30 @@
-import win32com.client, shutil, os
+import random
+import win32com.client
 
-
-speaker = win32com.client.Dispatch("SAPI.SpVoice")  # Windows speech engine
-voices = speaker.GetVoices()
-speaker.Voice = voices.Item(0)
+speaker = win32com.client.Dispatch("SAPI.SpVoice")
 speaker.Rate = 0
 speaker.Volume = 100
 
+a = random.randint(1, 100)
 
-copy = "New.txt"
+speaker.speak("Guess the number between 1 to 100")
 
-if os.path.exists(copy):
-    print("folder alrady exist.")
+for i in range(9, -1, -1):
+
+    b = float(input("Guess the number(between 1 to 100) :--> "))
+    
+    if b == a:
+        print("Waaw! You guessed it correct.", "Remaining chances --->", i)
+        speaker.speak(f"Waaw You guessed it correct Remaining chances {i}")
+        break
+    elif b > a:
+        print("Your guess is greater. Try again. Chances left:", i)
+        speaker.speak(f"Your guess is greater Try again Chances left {i}")
+    else:
+        print("Your guess is smaller. Try again. Chances left:", i)
+        speaker.speak(f"Your guess is smaller Try again Chances left {i}")
 else:
-    shutil.copytree(r"C:\Users\Pramod sah\first_code.py",copy)
+    print("Sorry, you've used all chances. The correct number was:", a)
+    speaker.speak(f"Sorry you've used all chances The correct number was {a}")
 
-for i in range(10,-1,-1):
-    print(i)
-    speaker.speak(i)
-
-shutil.rmtree(copy)
-print(f"The folder name ''{copy}'' has deleted.")
+print("-------- Game Over --------")
