@@ -50,7 +50,7 @@ class Class(School):
         print(f"Name change to {self.address} sucessfully.")
 
 class Boy(Class):
-    sex = "Boy"
+    Gender = "Boy"
 
 class Girl(Class):
-    sex = "Girl"
+    Gender = "Girl"
